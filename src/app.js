@@ -22,21 +22,22 @@ app.post('/api/v1/products', (req, res) => {
         quantity: 10,
     };
     products.push(newProduct);
-    fs.writeFile(`${__dirname}/data/products.json`, JSON.stringify(products, null, 2));
-    (err) => {
-        if (err) {
-            res.status(400).json({
-                message: err.message,
-            })
+    fs.writeFile(`${__dirname}/data/products.json`, JSON.stringify(products, null, 2),
+        (err) => {
+            if (err) {
+                res.status(400).json({
+                    message: err.message,
+                })
+            }
+            res.status(201).json({
+                status: 'Success',
+                message: 'Product added successfully',
+                data: {
+                    newProduct,
+                },
+            });
         }
-        res.status(201).json({
-            status: 'Success',
-            message: 'Product added successfully',
-            data: {
-                newProduct,
-            },
-        });
-    }
+    )
 });
 
 // GET endpoint for sending the details of users
