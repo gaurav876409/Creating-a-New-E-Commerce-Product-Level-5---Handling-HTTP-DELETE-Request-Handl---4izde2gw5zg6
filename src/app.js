@@ -22,7 +22,7 @@ app.post('/api/v1/products', (req, res) => {
         quantity: 10,
     };
     products.push(newProduct);
-    fs.writeFileSync(`${__dirname}/data/products.json`, JSON.stringify(products, null, 2));
+    fs.writeFile(`${__dirname}/data/products.json`, JSON.stringify(products, null, 2));
     (err) => {
         if (err) {
             res.status(400).json({
