@@ -30,7 +30,7 @@ app.post('/api/v1/products', (req, res) => {
             })
         }
         res.status(201).json({
-            status: 'success',
+            status: 'Success',
             message: 'Product added successfully',
             data: {
                 newProduct,
